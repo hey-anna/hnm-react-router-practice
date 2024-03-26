@@ -10,6 +10,7 @@ function ProductAll() {
     // console.log(data);
     setProductList(data);
   };
+  console.log("productList", productList);
   useEffect(() => {
     getProducts();
   }, []);
