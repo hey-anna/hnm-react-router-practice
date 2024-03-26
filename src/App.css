@@ -1,0 +1,92 @@
+/* 초기화 */
+input:hover {
+  border: 0;
+}
+
+input:focus {
+  border: 0;
+}
+
+input:focus-visible {
+  /* outline: -webkit-focus-ring-color auto 1px; */
+  outline: 0;
+}
+.login-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
+
+.login-txt-style {
+  margin-left: 4px;
+}
+
+.nav-section {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-area {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-list {
+  display: flex;
+  list-style-type: none;
+}
+
+.menu-list li {
+  padding: 10px;
+}
+
+.search {
+  padding: 10px;
+  /* position: relative; */
+  position: absolute;
+  /* width: 200px; */
+  height: 38px;
+  right: 6%;
+}
+
+.search button {
+  border: 0;
+  background: 0;
+}
+.search input {
+  width: 100%;
+  /* border: 1px solid #bbb; */
+  border: 0;
+  border-bottom: 1px solid #000;
+  /* border-radius: 8px; */
+  padding: 10px 12px 10px 36px;
+  font-size: 14px;
+}
+
+.search-icon-sx {
+  position: absolute;
+  width: 32px;
+  height: 100%;
+  top: 0;
+  /* top: 10px; */
+  left: 0;
+  /* right: 12px; */
+  margin: 0;
+}
+/* img {
+  position: absolute;
+  width: 17px;
+  top: 10px;
+  right: 12px;
+  margin: 0;
+} */
+
+.card-box-style {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.card-style {
+  padding: 4px 8px;
+}
