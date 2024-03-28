@@ -12,12 +12,12 @@ input:focus-visible {
   outline: 0;
 }
 
-// font
+/* font */
 .font16px {
   font-size: 40px;
 }
 
-// 텍스트 스타일
+/* 텍스트 스타일 */
 .normal {
   font-style: normal;
 }
@@ -28,7 +28,7 @@ input:focus-visible {
   font-style: oblique;
 }
 
-// 폰트 굵기
+/* 폰트 굵기 */
 .font-weight-normal {
   font-weight: normal;
 }
