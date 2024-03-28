@@ -5,9 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 // import { fas, far, fal } from "@awesome.me/kit-KIT_CODE/icons";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+// mouse change pointer
+
+function Navbar({ isAuthenticated, setAuthenticate }) {
   const menuList = [
     "Women",
     // "Divided",
@@ -19,12 +25,32 @@ function Navbar() {
     "Sale",
     "지속가능성",
   ];
+
+  const navigate = useNavigate();
+
+  // 로그인페이지 이동
+  const goToLogin = () => {
+    navigate("/login");
+  };
+  // 사용자 로그아웃
+  const logoutUser = () => {
+    setAuthenticate(false);
+    navigate("/login");
+  };
+
   return (
     <>
-      <div className="login-button">
-        <FontAwesomeIcon icon={faUser} />
-        <div className="login-txt-style">로그인</div>
-      </div>
+      {isAuthenticated ? (
+        <div className="login-button" onClick={logoutUser}>
+          <FontAwesomeIcon icon={faSignOutAlt} size="2x" />
+          <div className="login-txt-style">Logout</div>
+        </div>
+      ) : (
+        <div className="login-button" onClick={goToLogin}>
+          <FontAwesomeIcon icon={faUser} size="2x" />
+          <div className="login-txt-style">Login</div>
+        </div>
+      )}
 
       <div className="nav-section">
         <img
@@ -39,6 +65,7 @@ function Navbar() {
             <li>{menu}</li>
           ))}
         </ul> */}
+        <div className="binBox"></div>
         <ul className="menu-list">
           {menuList.map((menu) => (
             <li>{menu}</li>

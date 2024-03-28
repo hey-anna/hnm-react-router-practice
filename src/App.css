@@ -11,14 +11,76 @@ input:focus-visible {
   /* outline: -webkit-focus-ring-color auto 1px; */
   outline: 0;
 }
+
+// font
+.font16px {
+  font-size: 40px;
+}
+
+// 텍스트 스타일
+.normal {
+  font-style: normal;
+}
+.italic {
+  font-style: italic;
+}
+.oblique {
+  font-style: oblique;
+}
+
+// 폰트 굵기
+.font-weight-normal {
+  font-weight: normal;
+}
+.font-weigh-bold {
+  font-weight: bold;
+}
+
+/* Relative to the parent */
+/* .font-weight-lighter: lighter;
+.font-weight-bolder: bolder; */
+
+.font-weight-100 {
+  font-weight: 100;
+}
+.font-weight-200 {
+  font-weight: 200;
+}
+.font-weight-300 {
+  font-weight: 300;
+}
+.font-weight-400 {
+  font-weight: 400;
+}
+.font-weight-500 {
+  font-weight: 500;
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+.font-weight-700 {
+  font-weight: 700;
+}
+.font-weight-800 {
+  font-weight: 800;
+}
+.font-weight-900 {
+  font-weight: 900;
+}
+
+.product-container {
+  margin-bottom: 6%;
+}
+
 .login-button {
   display: flex;
   justify-content: flex-end;
   margin: 20px;
+  cursor: pointer;
 }
 
 .login-txt-style {
-  margin-left: 4px;
+  margin-left: 5px;
 }
 
 .nav-section {
@@ -28,12 +90,19 @@ input:focus-visible {
 
 .menu-area {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: space-around;
+  margin: 20px 1.5% 20px;
 }
-
+.binBox {
+  flex: 0.8;
+}
 .menu-list {
   display: flex;
   list-style-type: none;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 0;
 }
 
 .menu-list li {
@@ -41,12 +110,14 @@ input:focus-visible {
 }
 
 .search {
-  padding: 10px;
-  /* position: relative; */
-  position: absolute;
+  /* padding: 10px; */
+  position: relative;
+  /* position: absolute; */
+  /* align-items: end; */
   /* width: 200px; */
   height: 38px;
-  right: 6%;
+  /* right: 6%; */
+  flex: 0.8;
 }
 
 .search button {
@@ -59,7 +130,7 @@ input:focus-visible {
   border: 0;
   border-bottom: 1px solid #000;
   /* border-radius: 8px; */
-  padding: 10px 12px 10px 36px;
+  padding: 10px 12px 10px 32px;
   font-size: 14px;
 }
 
@@ -85,8 +156,109 @@ input:focus-visible {
   display: flex;
   justify-content: center;
   padding: 8px;
+  margin: 0 10% 6%;
 }
 
-.card-style {
-  padding: 4px 8px;
+.card {
+  transition: transform 0.3s ease;
+  padding-bottom: 8px;
 }
+
+.card:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+.card > img {
+  margin-bottom: 8px;
+}
+.card > div {
+  padding: 0 8px;
+}
+/* .card-style {
+  padding: 4px 8px;
+} */
+
+.product-img {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.product-txt > div {
+  margin-bottom: 8px;
+}
+
+/* 로그인 버튼 스타일 */
+
+/* Login.css */
+/* .login-btn {
+  background-image: linear-gradient(145deg, #ff4081, #ff5177);
+  border: none;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+} */
+
+/* .login-btn:hover {
+  background-image: linear-gradient(145deg, #ff5177, #ff4081);
+  box-shadow: 0 5px 8px 2px rgba(255, 105, 135, 0.5);
+  transform: translateY(-2px);
+} */
+
+/* .login-btn:focus {
+  outline: none;
+} */
+/* Login.css */
+/* Login.css */
+
+/* Login.css 수정 */
+/* Login.css 수정 */
+.login-form-container {
+  /* 기존 스타일 설정 유지 */
+  position: relative;
+  /* max-width: 400px; */
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /* 배경 이미지 설정 */
+  background-image: url("https://logos-world.net/wp-content/uploads/2020/04/HM-Logo-1968-1999.png"); /* 이미지 URL 변경 필요 */
+  background-size: cover;
+  background-position: center;
+}
+
+/* 회색 덮개 추가 */
+.login-form-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* 반투명 검정색 레이어로 회색 효과 생성 */
+  border-radius: 8px; /* 컨테이너와 동일한 둥근 모서리 */
+  z-index: 0;
+}
+
+/* 폼 요소 스타일 조정 */
+.login-form-container * {
+  position: relative;
+  z-index: 1;
+}
+
+/* .login-btn {
+  padding: 10px 15px;
+  font-size: 18px;
+  width: 100%;
+  display: block;
+  margin: 10px 0;
+} */

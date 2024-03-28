@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import ProductCard from "../component/ProductCard";
 
 function ProductAll() {
@@ -17,7 +18,17 @@ function ProductAll() {
   return (
     <>
       <div className="card-box-style">
-        <ProductCard /> <ProductCard /> <ProductCard /> <ProductCard />
+        <Container>
+          <Row>
+            {/* props를 아이템을 메뉴로 내려준다 */}
+            {productList.map((menu) => (
+              <Col lg={3}>
+                <ProductCard item={menu} />
+              </Col>
+            ))}
+          </Row>
+          {/* <ProductCard /> <ProductCard /> <ProductCard /> <ProductCard /> */}
+        </Container>
       </div>
     </>
   );
