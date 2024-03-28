@@ -8,7 +8,8 @@ const ProductDetail = () => {
   let { id } = useParams();
   const [product, setProduct] = useState(null);
   const getProductDetail = async () => {
-    let url = `http://localhost:5000/products/${id}`;
+    // let url = `http://localhost:5000/products/${id}`;
+    let url = `https://my-json-server.typicode.com/hey-anna/noona-hnm/products/${id}`;
     let response = await fetch(url);
     let data = await response.json();
     console.log("### data", data); // 데이터 가져와서 뿌려주기, 스테이트에다가 저장하자

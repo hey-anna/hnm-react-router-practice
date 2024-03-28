@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProductCard from "../component/ProductCard";
+import { useSearchParams } from "react-router-dom";
+
+// 구글링 my json server
 
 function ProductAll() {
   const [productList, setProductList] = useState([]);
+  let [query, setQuery] = useSearchParams();
   const getProducts = async () => {
-    let url = "http://localhost:5000/products";
+    // let url = "http://localhost:5000/products";
+    let searchQuery = query.get("q") || "";
+    let url = `https://my-json-server.typicode.com/hey-anna/noona-hnm/products?q=${searchQuery}`;
+
     let response = await fetch(url);
     let data = await response.json();
     // console.log(data);
