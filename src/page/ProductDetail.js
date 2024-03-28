@@ -9,11 +9,21 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const getProductDetail = async () => {
     // let url = `http://localhost:5000/products/${id}`;
-    let url = `https://my-json-server.typicode.com/hey-anna/noona-hnm/products/${id}`;
-    let response = await fetch(url);
-    let data = await response.json();
-    console.log("### data", data); // 데이터 가져와서 뿌려주기, 스테이트에다가 저장하자
-    setProduct(data);
+    let url = `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products/${id}`;
+    // let response = await fetch(url);
+    // let data = await response.json();
+    // console.log("### data", data); // 데이터 가져와서 뿌려주기, 스테이트에다가 저장하자
+    // setProduct(data);
+    try {
+      let response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      let data = await response.json();
+      setProduct(data);
+    } catch (error) {
+      console.error("Fetching product detail failed:", error);
+    }
   };
   // id값은 항상 동적으로 변경되야 하니, 이숫자를 읽어서 넣어줘야 한다.
   // 이 숫자를 읽어주는게 유즈파남스

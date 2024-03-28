@@ -12,7 +12,7 @@ function ProductAll() {
   const getProducts = async () => {
     // let url = "http://localhost:5000/products";
     let searchQuery = query.get("q") || "";
-    let url = `https://my-json-server.typicode.com/hey-anna/noona-hnm/products?q=${searchQuery}`;
+    let url = `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products?q=${searchQuery}`;
 
     // let response = await fetch(url);
     // let data = await response.json();
@@ -24,7 +24,7 @@ function ProductAll() {
         throw new Error("Network response was not ok");
       }
       let data = await response.json();
-      setProductList(data.products); // 여기를 수정했습니다.
+      setProductList(data); // 여기를 수정했습니다.
     } catch (error) {
       console.error("Fetching products failed:", error);
       // 오류 발생 시 적절한 처리를 여기에 추가하세요.
