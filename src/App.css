@@ -263,7 +263,7 @@ input:focus-visible {
   margin: 10px 0;
 } */
 
-// 사이드바 스타일 소스
+/* 사이드바 스타일 소스 */
 .sidebar {
   position: fixed;
   top: 0;
@@ -285,24 +285,6 @@ input:focus-visible {
   display: none;
 }
 
-/* 대형 화면에서 메뉴 리스트 항상 표시 */
-/* .menu-list {
-  display: reset;
-} */
-
-/* 모바일 뷰에서만 적용될 스타일 */
-/* @media (max-width: 768px) { */
-/* 모바일 화면에서 햄버그 메뉴 버튼 표시 */
-/* .menu-toggle {
-    display: block;
-  } */
-
-/* 모바일 화면에서 메뉴 리스트 초기에 숨기기 */
-/* .menu-list {
-    display: none;
-  } */
-/* } */
-
 @media (max-width: 768px) {
   .mobile-top {
     display: flex;
@@ -310,7 +292,7 @@ input:focus-visible {
   }
 
   .menu-toggle {
-    display: block; /* Show the toggle button in mobile view */
+    display: block;
     background: 0;
     border: 0;
     padding: 0 8px;
@@ -325,16 +307,4 @@ input:focus-visible {
   .binBox {
     display: none;
   }
-  /* .menu-area {
-    display: block;
-  } */
-  /* .menu-area {
-    display: none;
-  } */
-  /* .nav-section {
-  } */
-  /* Product images displayed in a single column .product-list {
-    display: grid;
-    grid-template-columns: 1fr;
-  } */
 }
