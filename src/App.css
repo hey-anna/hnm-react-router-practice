@@ -262,3 +262,79 @@ input:focus-visible {
   display: block;
   margin: 10px 0;
 } */
+
+// 사이드바 스타일 소스
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%; /* 기본적으로 사이드바는 화면 왼쪽 바깥에 숨겨져 있음 */
+  width: 250px; /* 또는 원하는 너비 */
+  height: 100%;
+  background-color: pink; /* 또는 원하는 배경색 */
+  transition: left 0.3s ease; /* 부드러운 애니메이션 효과 */
+  z-index: 1000; /* 다른 요소들 위에 오도록 */
+}
+
+.sidebar.open {
+  left: 0; /* 사이드바를 화면에 표시 */
+  /* transform: translateX(0); */
+}
+
+/* 대형 화면에서 햄버거 메뉴 버튼 숨기기 */
+.menu-toggle {
+  display: none;
+}
+
+/* 대형 화면에서 메뉴 리스트 항상 표시 */
+/* .menu-list {
+  display: reset;
+} */
+
+/* 모바일 뷰에서만 적용될 스타일 */
+/* @media (max-width: 768px) { */
+/* 모바일 화면에서 햄버그 메뉴 버튼 표시 */
+/* .menu-toggle {
+    display: block;
+  } */
+
+/* 모바일 화면에서 메뉴 리스트 초기에 숨기기 */
+/* .menu-list {
+    display: none;
+  } */
+/* } */
+
+@media (max-width: 768px) {
+  .mobile-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: block; /* Show the toggle button in mobile view */
+    background: 0;
+    border: 0;
+    padding: 0 8px;
+    margin-left: 12px;
+  }
+  .menu-list {
+    display: none;
+  }
+  .menu-list.open {
+    display: flex;
+  }
+  .binBox {
+    display: none;
+  }
+  /* .menu-area {
+    display: block;
+  } */
+  /* .menu-area {
+    display: none;
+  } */
+  /* .nav-section {
+  } */
+  /* Product images displayed in a single column .product-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  } */
+}
