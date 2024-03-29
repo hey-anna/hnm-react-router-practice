@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 // import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 // import { fas, far, fal } from "@awesome.me/kit-KIT_CODE/icons";
 import {
@@ -122,7 +122,7 @@ function Navbar({ isAuthenticated, setAuthenticate }) {
       {/* 사이드메뉴 및 버튼 */}
       <div className="mobile-top">
         <button className="menu-toggle" onClick={toggleSideMenu}>
-          <FontAwesomeIcon icon={faBars} size="2x" />
+          <FontAwesomeIcon icon={isSideMenuOpen ? faTimes : faBars} size="2x" />
         </button>
         {isAuthenticated ? (
           <div className="login-button" onClick={logoutUser}>
@@ -156,7 +156,7 @@ function Navbar({ isAuthenticated, setAuthenticate }) {
         {/* {isSideMenuOpen && ( */}
         <ul
           // className="menu-list"
-          className={`menu-list ${isSideMenuOpen ? "open" : ""}`}
+          className={`menu-list sidebar ${isSideMenuOpen ? "open" : ""}`}
           // style={{ display: isSideMenuOpen ? "block" : "none" }}
         >
           {menuList.map((menu) => (

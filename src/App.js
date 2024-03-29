@@ -45,7 +45,7 @@ import PrivateRoute from "./route/PrivateRoute";
 // 유저는 로그아웃 할 수 있다. [ㅇ]
 // 로그인이된 상태이면 로그아웃버튼이, 로그아웃 된 상태이면 로그인 버튼이 보인다. [ㅇ]
 // H&M로고를 클릭하면 상품 전체페이지로 돌아온다. [ㅇ]
-// 모바일 버전에서 메뉴는 사이드 메뉴로 들어간다. 제품 사진들은 한장씩 세로로 나온다.
+// 모바일 버전에서 메뉴는 사이드 메뉴로 들어간다. 제품 사진들은 한장씩 세로로 나온다. [ㅇ]
 
 function App() {
   const [authenticate, setAuthenticate] = useState(false); // true 면 로그인 됨 false면 로그인 안된
