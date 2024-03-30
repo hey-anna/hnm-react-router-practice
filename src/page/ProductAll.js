@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Stack } from "react-bootstrap";
 import ProductCard from "../component/ProductCard";
 import { useSearchParams } from "react-router-dom";
 
@@ -69,10 +69,13 @@ function ProductAll() {
         <Container>
           <Row>
             {/* props를 아이템을 메뉴로 내려준다 */}
+
             {productList.map((menu) => (
-              <Col lg={3}>
+              // <Stack gap={3}>
+              <Col lg={3} xs={6} className="p-2">
                 <ProductCard item={menu} />
               </Col>
+              // </Stack>
             ))}
           </Row>
           {/* <ProductCard /> <ProductCard /> <ProductCard /> <ProductCard /> */}
