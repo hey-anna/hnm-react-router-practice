@@ -51,6 +51,12 @@ import PrivateRoute from "./route/PrivateRoute";
 // 디스패치에서 함수를 이용해야하고
 // 그리고 액션이라는 미들웨어 함수를 저장해놓는 곳을 따로 만들어 줘야한다. 그리고 디스패치
 
+// !!! 마지막 리덕스 정리
+// 리덕스 동기적으로 state 처리
+// 컴바인 리듀서, 객체 형태로 합쳐서 전달
+// 객체 안에 키를 정의해놓고, 내가 원하는 리듀서를 할당해주면 된다
+// 리듀서 합쳐줄때 컴바인 리듀서
+
 function App() {
   const [authenticate, setAuthenticate] = useState(false); // true 면 로그인 됨 false면 로그인 안된
   useEffect(() => {

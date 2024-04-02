@@ -70,7 +70,7 @@ function Login({ setAuthenticate }) {
           <Form.Control
             type="email"
             placeholder="Enter email"
-            onChange={(event) => setID(event.target.valueAsDate)}
+            onChange={(event) => setID(event.target.value)}
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.

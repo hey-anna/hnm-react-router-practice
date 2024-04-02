@@ -33,7 +33,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function ProductAll() {
   // const [productList, setProductList] = useState([]);
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state) => state.product.productList);
   let [query, setQuery] = useSearchParams();
   const dispatch = useDispatch();
   // 이제여기서 해줘야 할일
