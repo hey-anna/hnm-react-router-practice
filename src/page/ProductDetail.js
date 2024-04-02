@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Option from "../component/Option";
 import SellBtn from "../component/SellBtn";
 import { productAction } from "../redux/actions/productAction";
+// import { productAction } from "../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetail = () => {

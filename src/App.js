@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import ProductAll from "./page/ProductAll";
 import Login from "./page/Login";
-import ProductDetail from "./page/ProductDetail";
+// import ProductDetail from "./page/ProductDetail";
 import Navbar from "./component/Navbar";
 import PrivateRoute from "./route/PrivateRoute";
 
@@ -62,10 +62,10 @@ import PrivateRoute from "./route/PrivateRoute";
 // PrivateRoute와 App.js 수정하기 (더이상 App에 authenticate state가 있을 필요가 없습니다. 지워주시고 PrivateRoute도 props가 아닌 store에서 값을 가져오는걸로 수정해주세요!)
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false); // true 면 로그인 됨 false면 로그인 안된
-  useEffect(() => {
-    console.log("### authenticate", authenticate);
-  }, [authenticate]);
+  // const [authenticate, setAuthenticate] = useState(false); // true 면 로그인 됨 false면 로그인 안된
+  // useEffect(() => {
+  //   console.log("### authenticate", authenticate);
+  // }, [authenticate]);
   // authenticate 값이 바뀔 때 마다 프린트를 하겠다.
 
   // const PrivateRoute = () => {

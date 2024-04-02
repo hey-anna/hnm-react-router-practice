@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+// import { UseSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 // import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -11,6 +12,8 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+
+import { authenticateAction } from "../redux/actions/authenciateAction";
 
 // mouse change pointer
 
@@ -28,7 +31,8 @@ import { Link, useNavigate } from "react-router-dom";
 // 만약에 이벤트에 있는 key가 Enter이다?
 // 그러면 콘솔로그를 체크하게 해봄
 
-function Navbar({ isAuthenticated, setAuthenticate }) {
+function Navbar({ setAuthenticate }) {
+  const isAuthenticated = useSelector((state) => state.auth.authenticate);
   const menuList = [
     "Women",
     // "Divided",
@@ -42,7 +46,7 @@ function Navbar({ isAuthenticated, setAuthenticate }) {
   ];
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   // 사이드 메뉴
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
@@ -69,8 +73,15 @@ function Navbar({ isAuthenticated, setAuthenticate }) {
     navigate("/login");
   };
   // 사용자 로그아웃
+  // const logoutUser = () => {
+  //   setAuthenticate(false);
+  //   navigate("/login");
+  // };
+
+  // 사용자 로그아웃 미들웨어용 함수 수정
   const logoutUser = () => {
-    setAuthenticate(false);
+    // setAuthenticate(false); // 이전 상태 관리 코드 제거
+    dispatch(authenticateAction.logout()); // logout 액션 디스패치
     navigate("/login");
   };
 

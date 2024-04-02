@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import authenticateReducer from "./autheticateReducer";
 import productReducer from "./productReducer";
-import productDetailReducer from "./productDetailReducer";
+// import productDetailReducer from "./productDetailReducer";
 
 // 어떻게 쓰냐면
 // 객체형태로 보내고 싶은 리듀서를 합치면 된다.
@@ -12,5 +12,5 @@ import productDetailReducer from "./productDetailReducer";
 export default combineReducers({
   auth: authenticateReducer,
   product: productReducer,
-  productDetail: productDetailReducer,
+  //   productDetail: productDetailReducer,
 });

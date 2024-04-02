@@ -7,7 +7,7 @@ import {
   faLock,
   faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { UseDispatch, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { authenticateAction } from "../redux/actions/authenciateAction";
 
 function Login({ setAuthenticate }) {
@@ -84,14 +84,14 @@ function Login({ setAuthenticate }) {
           <Form.Control
             type="password"
             placeholder="Password"
-            onChange={(event) => event.target.value}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
         <Button className="login-btn" variant="danger" type="submit">
-          <FontAwesomeIcon icon={faSignInAlt} />{" "}
+          <FontAwesomeIcon icon={faSignInAlt} />
           <h2 className="login-form-heading">로그인</h2>
         </Button>
       </Form>
