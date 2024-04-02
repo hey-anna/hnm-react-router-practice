@@ -4,6 +4,8 @@
 // dispatch 주는거고
 // getState 현재의 정보를 여러분들이 받아 볼 수 있음
 
+// 리덕스에서는 기능별로 action과 reducer파일을 나눔
+
 function getProducts(searchQuery) {
   return async (dispatch, getState) => {
     // let searchQuery = query.get("q") || "";

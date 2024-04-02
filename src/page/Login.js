@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,8 @@ import {
   faLock,
   faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { UseDispatch, useDispatch } from "react-redux";
+import { authenticateAction } from "../redux/actions/authenciateAction";
 
 function Login({ setAuthenticate }) {
   // Form 주의
@@ -29,15 +31,25 @@ function Login({ setAuthenticate }) {
   // S - E
   // 03 그리고 당연히 여기에 받아와야 한다.
   // 그리고 이 이벤트 주는 함수가, 이럴때 쓰라고 주는 함수가 있다preventDefault
-
+  const [id, setID] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   console.log("###navigate", navigate);
 
+  // 로그인 미들웨어로 구현하기!!
+  // 미들 웨어로 구지 않보내도 되는데 연습을 위해 해보자
+  // 로그인 함수도 async라고 가정을 하고!(실제는 async가 맞음)
+  // !! 해줘야 하는거 정리
+  // 로그인을 시도를 하면 유저 id와 password autheticate 정보 변경 !
+  // autheticate가 true인지 false인지 요 세개의 정보를 저장
+
+  const dispatch = useDispatch();
   const loginUser = (event) => {
     // 01 console.log("login user function issue"); // 버튼을 누르는 순간, 내용이 나타났다 금방 사라진다. 특성때문 so, form이 매번 리프레쉬하는것을 막아줘야 한다.
     event.preventDefault(); // 리프레쉬, 렌더 안한다
     console.log("login user function issue");
-    setAuthenticate(true);
+    // setAuthenticate(true);
+    dispatch(authenticateAction.login(id, password));
     navigate("/");
   };
 
@@ -55,7 +67,11 @@ function Login({ setAuthenticate }) {
           <Form.Label>
             <FontAwesomeIcon icon={faEnvelope} /> Email addres
           </Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            onChange={(event) => setID(event.target.valueAsDate)}
+          />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -65,7 +81,11 @@ function Login({ setAuthenticate }) {
           <Form.Label>
             <FontAwesomeIcon icon={faLock} /> Password
           </Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onChange={(event) => event.target.value}
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
