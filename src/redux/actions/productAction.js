@@ -29,8 +29,15 @@ function getProducts(searchQuery) {
     //   }
   };
 }
-
-export const productAction = { getProducts };
+function getProductDetail(id) {
+  return async (dispatch) => {
+    let url = `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products/${id}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    dispatch({ type: "GET_SINGLE_PRODUCT_SUCCESS", payload: { data } });
+  };
+}
+export const productAction = { getProducts, getProductDetail };
 
 // 다른 파일에 있는것을 받으려면 항상 expport
 // productAction이라는 객체를 반환할건데

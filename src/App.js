@@ -57,6 +57,10 @@ import PrivateRoute from "./route/PrivateRoute";
 // 객체 안에 키를 정의해놓고, 내가 원하는 리듀서를 할당해주면 된다
 // 리듀서 합쳐줄때 컴바인 리듀서
 
+// 상세페이지 기능 > 미들웨이 사용해서 기능 작동되게 하기
+// getProductDetail 함수 미들웨어로 옮기기
+// PrivateRoute와 App.js 수정하기 (더이상 App에 authenticate state가 있을 필요가 없습니다. 지워주시고 PrivateRoute도 props가 아닌 store에서 값을 가져오는걸로 수정해주세요!)
+
 function App() {
   const [authenticate, setAuthenticate] = useState(false); // true 면 로그인 됨 false면 로그인 안된
   useEffect(() => {
@@ -69,16 +73,29 @@ function App() {
   // };
   return (
     <>
-      <Navbar
+      {/* <Navbar
         isAuthenticated={authenticate}
         setAuthenticate={setAuthenticate}
-      />
+      /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route
+        <Route path="/login" element={<Login />} />
+        <Route path="/product/:id" element={<PrivateRoute />} />
+        {/* <Route
           path="/login"
           element={<Login setAuthenticate={setAuthenticate} />}
-        />
+        /> */}
+        {/* <Route
+          path="/product/:id"
+          element={
+            <PrivateRoute authenticate={authenticate}>
+              <ProductDetail />
+            </PrivateRoute>
+          }
+        /> */}
+        {/* // 예전 연습 S */}
+
         {/* <Route
           path="/product/:id"
           element={
@@ -92,14 +109,7 @@ function App() {
           path="/product/:id"
           element={<PrivateRoute authenticate={authenticate} />}
         /> */}
-        <Route
-          path="/product/:id"
-          element={
-            <PrivateRoute authenticate={authenticate}>
-              <ProductDetail />
-            </PrivateRoute>
-          }
-        />
+        {/* // 예전연습 E */}
       </Routes>
     </>
   );
