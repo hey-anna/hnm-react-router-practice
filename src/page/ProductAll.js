@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Stack } from "react-bootstrap";
 import ProductCard from "../component/ProductCard";
 import { useSearchParams } from "react-router-dom";
-
+// import { productAction } from "..redux/actions/productAction";
+import { productAction } from "../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 // 구글링 my json server
 
 // 쿼리가 있으면!!(키워드가 있으면) 쿼리를 붙여서 데이터 검색하기
@@ -30,33 +32,45 @@ import { useSearchParams } from "react-router-dom";
 // 우리가 해줄게 뭐다? 서치해줄 큐 키워드를 넣어주면 알아서 해준다잉
 
 function ProductAll() {
-  const [productList, setProductList] = useState([]);
+  // const [productList, setProductList] = useState([]);
+  const productList = useSelector((state) => state.productList);
   let [query, setQuery] = useSearchParams();
-
+  const dispatch = useDispatch();
+  // 이제여기서 해줘야 할일
+  // productAction.js 만들어 놓은 미들웨어를 불러주야 한다.
   const getProducts = async () => {
     // let url = "http://localhost:5000/products";
+
+    // 리덕스 미들웨어로 처리 S
+    // 리덕스 미들웨어 함수(action creator)를 만들어줄거야 이코드로
+    // 서치쿼리 정보를 알아야 한다.
+    // 일규먼트로 서치쿼리값을 전달(매개변수로 전달)
+
     let searchQuery = query.get("q") || "";
     console.log("### searchQuery 쿼리값은?", searchQuery);
-    let url = `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products?q=${searchQuery}`;
+    dispatch(productAction.getProducts(searchQuery));
+    // let url = `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products?q=${searchQuery}`;
+    // setProductList(data) // 이거를 트라이캐치문으로 내려 나는 코드작성했움, 이거는 선생님이 구현한 부분이지만, 어디부분을 수정햇는지 표시하기 위해 추가해두고 주석처리 해둠
+    // 리덕스 미들웨어로 처리 E
 
     // let response = await fetch(url);
     // let data = await response.json();
     // // console.log(data);
     // setProductList(data.products);
-    try {
-      let response = await fetch(url);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      let data = await response.json();
-      setProductList(data); // 여기를 수정했습니다.
-    } catch (error) {
-      console.error("Fetching products failed:", error);
-      // 오류 발생 시 적절한 처리를 여기에 추가하세요.
-    }
+    // try {
+    //   let response = await fetch(url);
+    //   if (!response.ok) {
+    //     throw new Error("Network response was not ok");
+    //   }
+    //   let data = await response.json();
+    //   setProductList(data); // 여기를 수정했습니다.
+    // } catch (error) {
+    //   console.error("Fetching products failed:", error);
+    //   //   // 오류 발생 시 적절한 처리를 여기에 추가하세요.
+    // }
   };
 
-  console.log("productList", productList);
+  // console.log("productList", productList);
 
   useEffect(() => {
     getProducts();
