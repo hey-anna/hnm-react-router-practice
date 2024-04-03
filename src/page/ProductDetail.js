@@ -6,6 +6,7 @@ import SellBtn from "../component/SellBtn";
 import { productAction } from "../redux/actions/productAction";
 // import { productAction } from "../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchProductDetail } from "../redux/reducer/productSlice";
 
 const ProductDetail = () => {
   let { id } = useParams();
@@ -34,11 +35,15 @@ const ProductDetail = () => {
   // id값은 항상 동적으로 변경되야 하니, 이숫자를 읽어서 넣어줘야 한다.
   // 이 숫자를 읽어주는게 유즈파남스
 
-  useEffect(() => {
-    getProductDetail();
-  }, []);
+  // useEffect(() => {
+  //   getProductDetail();
+  // }, []);
   // getProductDetail를 호출할 때 마다 setProduct를 가져올 수 있다
-
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchProductDetail(id));
+    }
+  }, [id, dispatch]);
   return (
     <Container className="product-container">
       <Row>

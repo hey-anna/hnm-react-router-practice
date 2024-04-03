@@ -7,20 +7,63 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 let initialState = {
   productList: [],
   selectedItem: null,
-  isLoding: false,
+  isLoading: false,
   error: null,
 };
 
+// export const fetchProducts = createAsyncThunk(
+//   "product/fetchAll",
+//   async (searchQuery, thunkApi) => {
+//     console.log("## thunkApi", thunkApi);
+//     try {
+//       let url = `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products?q=${searchQuery}`;
+//       // setProductList(data);
+//       let response = await fetch(url);
+//       return await response.json();
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
+// thunkApi 구조
+// abort
+// dispatch
+// extra
+// fulfillWithValue
+// getState
+// rejectWithValue
+// requestId
+// signal
+
 export const fetchProducts = createAsyncThunk(
   "product/fetchAll",
-  async (searchQuery, thunkApi) => {
+  async (searchQuery, { rejectWithValue }) => {
     try {
-      let url = `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products?q=${searchQuery}`;
-      // setProductList(data);
-      let response = await fetch(url);
+      const url = `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products?q=${searchQuery}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
       return await response.json();
     } catch (error) {
-      thunkApi.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchProductDetail = createAsyncThunk(
+  "product/fetchDetail",
+  async (productId, { rejectWithValue }) => {
+    try {
+      const response = await fetch(
+        `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products/${productId}`
+      );
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -61,22 +104,35 @@ const productSlice = createSlice({
     //   state.productList = action.payload.data;
     // },
     getSingleProduct(state, action) {
-      state.selectedItem = action.payload.data;
+      // state.selectedItem = action.payload.data;
+      state.selectedItem = action.payload;
     },
   },
   // 외부로 부터 state가 바뀌는 경우(비동기 주로 처리)
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
-        state.isLoding = true;
+        state.isLoading = true;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.isLoding = false;
+        state.isLoading = false;
         state.productList = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.isLoding = false;
-        state.error = action.payload;
+        state.isLoading = false;
+        // state.error = action.payload;
+        state.error = action.error.message;
+      })
+      .addCase(fetchProductDetail.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchProductDetail.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.selectedItem = action.payload;
+      })
+      .addCase(fetchProductDetail.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
       });
   },
   //
