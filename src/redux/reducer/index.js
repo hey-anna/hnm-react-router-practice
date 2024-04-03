@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import authenticateReducer from "./autheticateReducer";
-import productReducer from "./productReducer";
+import authenticateReducer from "./authenticateReducer";
+// import productReducer from "./productReducer";
 // import productDetailReducer from "./productDetailReducer";
 
 // 어떻게 쓰냐면
@@ -11,6 +11,6 @@ import productReducer from "./productReducer";
 
 export default combineReducers({
   auth: authenticateReducer,
-  product: productReducer,
+  //   product: productReducer,
   //   productDetail: productDetailReducer,
 });

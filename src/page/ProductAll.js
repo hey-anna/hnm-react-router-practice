@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 // import { productAction } from "..redux/actions/productAction";
 import { productAction } from "../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/reducer/productSlice";
 // 구글링 my json server
 
 // 쿼리가 있으면!!(키워드가 있으면) 쿼리를 붙여서 데이터 검색하기
@@ -48,7 +49,8 @@ function ProductAll() {
 
     let searchQuery = query.get("q") || "";
     console.log("### searchQuery 쿼리값은?", searchQuery);
-    dispatch(productAction.getProducts(searchQuery));
+    // dispatch(productAction.getProducts(searchQuery));
+    dispatch(fetchProducts(searchQuery));
     // let url = `https://my-json-server.typicode.com/hey-anna/hnm-react-router-practice/products?q=${searchQuery}`;
     // setProductList(data) // 이거를 트라이캐치문으로 내려 나는 코드작성했움, 이거는 선생님이 구현한 부분이지만, 어디부분을 수정햇는지 표시하기 위해 추가해두고 주석처리 해둠
     // 리덕스 미들웨어로 처리 E
